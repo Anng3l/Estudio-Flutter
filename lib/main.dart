@@ -36,8 +36,50 @@ class MyAppState extends ChangeNotifier {
 
   //Por ahora sólo necesita esta variable
   var current = WordPair.random();
+
+  void getNext() {
+    current = WordPair.random();
+    notifyListeners();
+  }
 }
 
+
+class EstadoApp extends ChangeNotifier {
+  int numero = 0;
+
+}
+
+
+class MyHomePage extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context) {
+    
+    //Observa cambios en el estado
+    var observacion = context.watch<EstadoApp>();
+
+    return Scaffold(
+      body: Column(),
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+/*
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -47,26 +89,26 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         children: [
           Text('A random idea zzz:'),
-          Text(appState.current.asLowerCase),
+          Text(appState.current.asPascalCase),
         
 
 
           ElevatedButton(
             onPressed: () {
-              print("Botón presionado");
+              appState.getNext();
             },
-            child: Text("zzz"),
-          )
+            child: Text("Next"),
+          ),
 
-
-
-
-
-
-
-          
         ],
       ),
     );
   }
 }
+*/
+
+
+
+
+
+
